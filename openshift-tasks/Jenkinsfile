@@ -41,7 +41,7 @@ podTemplate(
       // Using Maven build the war file
       // Do not run tests in this step
       stage('Build war') {
-        steps{
+        steps {
         echo "Building version ${devTag}"
         sh "${mvnCmd} clean package -DskipTests=true"
         // TBD: Execute Maven Build
@@ -51,7 +51,7 @@ podTemplate(
 
       // Using Maven run the unit tests
       stage('Unit Tests') {
-        steps{
+        steps {
           echo "Running Unit Tests"
           sh "${mvnCmd} test"
         // TBD: Execute Unit Tests
