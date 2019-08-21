@@ -62,11 +62,14 @@ podTemplate(
 
       // Using Maven to call SonarQube for Code Analysis
       stage('Code Analysis') {
+        steps {
+       script {
         echo "Running Code Analysis"
-
-        // TBD: Execute Sonarqube Tests
+       // TBD: Execute Sonarqube Tests
+       sh "${mvnCmd} sonar:sonar -Dsonar.host.url=http://sonarqube-${prefix}-sonarqube.apps.fab.example.opentlc.com/ -Dsonar.projectName=${JOB_BASE_NAME} -Dsonar.projectVersion=${devTag}"
       }
-
+      }
+      }
       // Publish the built war file to Nexus
       stage('Publish to Nexus') {
         echo "Publish to Nexus"
