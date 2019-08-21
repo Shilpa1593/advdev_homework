@@ -85,9 +85,9 @@ podTemplate(
         // TBD: Build Image, tag Image
          script {
           openshift.withCluster() {
-          openshift.withProject("${devProject}") {
-          openshift.selector("bc", "tasks").startBuild("--from-file=./target/openshift-tasks.war", "--wait=true")
-          openshift.tag("tasks:latest", "tasks:${devTag}")
+           openshift.withProject("${GUID}-tasks-dev") {
+            openshift.selector("bc", "tasks").startBuild("--from-file=./target/openshift-tasks.war", "--wait=true")
+             openshift.tag("tasks:latest", "tasks:${devTag}")
         }
           }
        }
