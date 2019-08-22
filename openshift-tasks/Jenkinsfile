@@ -203,8 +203,8 @@ podTemplate(
         }
       }
     }
-    }
-  }
+    
+  
 
 
 // Convenience Functions to read version from the pom.xml
