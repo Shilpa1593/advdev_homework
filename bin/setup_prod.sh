@@ -20,7 +20,7 @@ oc expose dc tasks-blue --port 8080 -n ${GUID}-tasks-prod
 oc create configmap tasks-blue-config --from-literal="application-users.properties=Placeholder" --from-literal="application-roles.properties=Placeholder" -n ${GUID}-tasks-prod
 oc set volume dc/tasks-blue --add --name=jboss-config --mount-path=/opt/eap/standalone/configuration/application-users.properties --sub-path=application-users.properties --configmap-name=tasks-blue-config -n ${GUID}-tasks-prod
 oc set volume dc/tasks-blue --add --name=jboss-config1 --mount-path=/opt/eap/standalone/configuration/application-roles.properties --sub-path=application-roles.properties --configmap-name=tasks-blue-config -n ${GUID}-tasks-prod
-oc set probe dc/tasks-blue --readiness --get-url=http://:8080/ --initial-delay-seconds=30 --timeout-seconds=3 -n ${GUID}-tasks-prod
+oc set probe dc/tasks-blue --readiness --get-url=http://:8080/ --initial-delay-seconds=3 --timeout-seconds=3 -n ${GUID}-tasks-prod
 oc set probe dc/tasks-blue --liveness --get-url=http://:8080/ --initial-delay-seconds=30 --timeout-seconds=3 -n ${GUID}-tasks-prod
 oc set resources dc/tasks-blue --limits=memory=2Gi,cpu=2 --requests=memory=2Gi,cpu=1 -n ${GUID}-tasks-prod
 # Setting 'wrong' VERSION. This will need to be updated in the pipeline
