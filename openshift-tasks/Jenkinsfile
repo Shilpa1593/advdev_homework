@@ -117,7 +117,7 @@ podTemplate(
 
           echo "Waiting for ReplicationController tasks-${dc_version} to be ready"
           while (rc.spec.replicas != rc.status.readyReplicas) {
-            sleep 10
+            sleep 5
             rc = openshift.selector("rc", "tasks-${dc_version}").object()
           }
         }
@@ -177,7 +177,7 @@ podTemplate(
                 }
                 else {
                   echo "*** tasks-dev returned unexpected name."
-                  sleep 10
+                  sleep 5
                 }
               }
             }
