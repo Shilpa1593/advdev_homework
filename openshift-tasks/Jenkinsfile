@@ -161,7 +161,7 @@ podTemplate(
         //      Make sure the application is running and ready before proceeding
       script {
           openshift.withCluster() {
-            openshift.withProject("${GUID}-tasks-prod") {
+            openshift.withProject("${GUID}-tasks-dev") {
               openshift.set("image", "dc/tasks", "tasks=docker-registry.default.svc:5000/${GUID}-tasks-dev/tasks:${devTag}")
 
                 // Update Config Map in change config files changed in the source
