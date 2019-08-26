@@ -155,7 +155,7 @@ podTemplate(
       
     script {
       openshift.withCluster() {
-        openshift.withProject("${GUID}-tasks-prod") {
+        openshift.withProject("${GUID}-tasks-dev") {
           activeApp = openshift.selector("route", "tasks").object().spec.to.name
           if (activeApp == "tasks-green") {
             destApp = "tasks-blue"
