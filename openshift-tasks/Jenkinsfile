@@ -125,7 +125,7 @@ podTemplate(
             }
           }
         }
-    }
+  
 
       // Copy Image to Nexus container registry
       stage('Copy Image to Nexus container registry') {
@@ -155,8 +155,9 @@ podTemplate(
       
     script {
       openshift.withCluster() {
-        openshift.withProject("${GUID}-tasks-dev") {
+        openshift.withProject("${GUID}-tasks-prod") {
           activeApp = openshift.selector("route", "tasks").object().spec.to.name
+
           if (activeApp == "tasks-green") {
             destApp = "tasks-blue"
           }
@@ -213,7 +214,8 @@ podTemplate(
       }
     }
     }
-  
+  }
+}
 
 
 
